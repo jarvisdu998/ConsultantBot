@@ -13,9 +13,10 @@ import reactor.core.publisher.Flux;
  * @date 2025/7/29
  */
 @AiService(
-        wiringMode = AiServiceWiringMode.EXPLICIT,
+        wiringMode = AiServiceWiringMode.EXPLICIT,// 手动装配
         chatModel = "openAiChatModel",
-        streamingChatModel = "openAiStreamingChatModel"
+        streamingChatModel = "openAiStreamingChatModel",
+        chatMemory = "chatMemory" // 配置会话记忆对象
 )
 
 public interface ConsultantService {
