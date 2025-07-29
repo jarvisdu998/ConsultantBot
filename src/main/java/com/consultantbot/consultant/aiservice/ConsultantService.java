@@ -1,5 +1,6 @@
 package com.consultantbot.consultant.aiservice;
 
+import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
 import dev.langchain4j.service.spring.AiService;
@@ -16,7 +17,8 @@ import reactor.core.publisher.Flux;
         wiringMode = AiServiceWiringMode.EXPLICIT,// 手动装配
         chatModel = "openAiChatModel",
         streamingChatModel = "openAiStreamingChatModel",
-        chatMemory = "chatMemory" // 配置会话记忆对象
+        chatMemory = "chatMemory", // 配置会话记忆对象
+        chatMemoryProvider = "chatMemoryProvider"
 )
 
 public interface ConsultantService {
@@ -25,5 +27,5 @@ public interface ConsultantService {
     @SystemMessage("你是码上启航工作室的老板杜嘉伟的小助手，负责和询单的用户进行沟通业务相关的事宜。")
     //@SystemMessage(fromResource = "prompt.txt")
     //@UserMessage("")
-    public Flux<String> chat(String message);
+    public Flux<String> chat(@MemoryId String memoryId, @UserMessage String message);
 }

@@ -19,8 +19,8 @@ public class ChatController {
     @Autowired
     private ConsultantService consultantService;
     @RequestMapping(value = "/chat",produces = "text/html;charset=utf-8")
-    public Flux<String> chat(String message) {
-        Flux<String> result = consultantService.chat(message);
+    public Flux<String> chat(String memoryId, String message) {
+        Flux<String> result = consultantService.chat(memoryId, message);
         return result;
     }
 
