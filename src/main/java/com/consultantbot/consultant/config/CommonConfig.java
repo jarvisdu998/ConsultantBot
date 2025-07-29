@@ -1,0 +1,28 @@
+package com.consultantbot.consultant.config;
+
+import com.consultantbot.consultant.aiservice.ConsultantService;
+import dev.langchain4j.model.openai.OpenAiChatModel;
+import dev.langchain4j.service.AiServices;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * @author jarvisdu
+ * @description CommonConfig
+ * @date 2025/7/29
+ */
+
+@Configuration
+public class CommonConfig {
+    @Autowired
+    private OpenAiChatModel model;
+
+//    @Bean
+//    public ConsultantService consultantService() {
+//        ConsultantService consultantService=AiServices.builder(ConsultantService.class)
+//                .chatModel(model)
+//                .build();
+//        return consultantService;
+//    }
+}
