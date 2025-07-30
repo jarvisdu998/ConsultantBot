@@ -18,7 +18,8 @@ import reactor.core.publisher.Flux;
         chatModel = "openAiChatModel",
         streamingChatModel = "openAiStreamingChatModel",
         chatMemory = "chatMemory", // 配置会话记忆对象
-        chatMemoryProvider = "chatMemoryProvider"
+        chatMemoryProvider = "chatMemoryProvider",
+        contentRetriever = "contentRetriever"
 )
 
 public interface ConsultantService {
