@@ -20,6 +20,12 @@ langchain4j:
       model-name: nomic-embed-text
       log-requests: true
       log-responses: true
+
+  community:
+    redis:
+      host: localhost
+      port: 6379
+
 logging:
   level:
     dev.langchain4j: debug

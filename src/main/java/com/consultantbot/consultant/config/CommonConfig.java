@@ -1,6 +1,7 @@
 package com.consultantbot.consultant.config;
 
 import com.consultantbot.consultant.aiservice.ConsultantService;
+import dev.langchain4j.community.store.embedding.redis.RedisEmbeddingStore;
 import dev.langchain4j.data.document.Document;
 import dev.langchain4j.data.document.DocumentSplitter;
 import dev.langchain4j.data.document.loader.ClassPathDocumentLoader;
@@ -44,6 +45,8 @@ public class CommonConfig {
 //        return consultantService;
 //    }
     @Autowired
+    private RedisEmbeddingStore redisEmbeddingStore;
+    @Autowired
     private ChatMemoryStore redisChatMemoryStore;
     @Autowired
     private EmbeddingModel embeddingModel;
@@ -82,25 +85,27 @@ public class CommonConfig {
         // List<Document> documents = FileSystemDocumentLoader.loadDocuments("E:\\Ado's Legion Y7000P\\Code\\Plan\\Java\\Langchain4jProject\\ConsultantBot\\src\\main\\resources\\content");
         List<Document> documents = ClassPathDocumentLoader.loadDocuments("content",new ApachePdfBoxDocumentParser());
         // 构建向量数据库操作对象
-        InMemoryEmbeddingStore store = new InMemoryEmbeddingStore();
+        //InMemoryEmbeddingStore store = new InMemoryEmbeddingStore();
 
         // 构建文档分割器对象
         DocumentSplitter splitter = DocumentSplitters.recursive(500,100);
         // 构建一个EmbeddingStoreIngestor对象, 完成文本数据切割、向量化、存储
         EmbeddingStoreIngestor ingestor = EmbeddingStoreIngestor.builder()
-                .embeddingStore(store)
+                // .embeddingStore(store)
+                .embeddingStore(redisEmbeddingStore)
                 .documentSplitter(splitter)
                 .embeddingModel(embeddingModel)
                 .build();
         ingestor.ingest(documents);
-        return store;
+        return redisEmbeddingStore;
     }
 
     @Bean
     // 构建向量数据库检索对象
-    public ContentRetriever contentRetriever(EmbeddingStore store){
+    public ContentRetriever contentRetriever(/*EmbeddingStore store*/){
         return EmbeddingStoreContentRetriever.builder()
-                .embeddingStore(store)
+                // .embeddingStore(store)
+                .embeddingStore(redisEmbeddingStore)
                 .maxResults(3)
                 .minScore(0.75)
                 .embeddingModel(embeddingModel)
