@@ -1,18 +1,35 @@
 langchain4j:
   open-ai:
+#    local model 0.6b:
+#    chat-model:
+#      base-url: http://localhost:11434/v1
+#      api-key: ""
+#      model-name: qwen3:0.6b
+#      log-requests: true
+#      log-responses: true
+#
+#    streaming-chat-model:
+#      base-url: http://localhost:11434/v1
+#      api-key: ""
+#      model-name: qwen3:0.6b
+#      log-requests: true
+#      log-responses: true
+
+#    openrouter model
     chat-model:
-      base-url: http://localhost:11434/v1
-      api-key: ""
-      model-name: qwen3:0.6b
+      base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      api-key: "sk-0fec0d4d97a2487886ad3e7d9c42cc93"
+      model-name: qwen-plus
       log-requests: true
       log-responses: true
 
     streaming-chat-model:
-      base-url: http://localhost:11434/v1
-      api-key: ""
-      model-name: qwen3:0.6b
+      base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      api-key: "sk-0fec0d4d97a2487886ad3e7d9c42cc93"
+      model-name: qwen-plus
       log-requests: true
       log-responses: true
+
 
     embedding-model:
       base-url: http://localhost:11434/v1
@@ -34,3 +51,11 @@ spring:
     redis:
       host: localhost
       port: 6379
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3307/volunteer?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 1234
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
