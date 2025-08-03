@@ -13,23 +13,24 @@ import java.time.LocalDateTime;
 public class ReservationServiceTest {
     @Autowired
     private ReservationService reservationService;
-    //测试添加
+    
+    //测试添加预约
     @Test
     //@Transactional
     void testInsert(){
         Reservation reservation = new Reservation();
         reservation.setId(null);
-        reservation.setName("张2");
+        reservation.setName("张同学");
         reservation.setPhone("13800138000");
         reservation.setGender("男");
-        reservation.setCommunicationTime(LocalDateTime.now()); // 2025年8月2日10点30分
+        reservation.setCommunicationTime(LocalDateTime.now().plusDays(1)); // 明天
         reservation.setProvince("江苏省");
-        reservation.setEstimatedScore(85);
+        reservation.setTechnicalRequirement("希望学习Java Web开发，包括Spring Boot框架");
 
         reservationService.insert(reservation);
-
     }
-    //测试查询
+    
+    //测试查询预约
     @Test
     void testSelectByPhone(){
         String phone = "13800138000";

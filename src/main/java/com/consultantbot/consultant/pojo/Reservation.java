@@ -17,5 +17,5 @@ public class Reservation {
     private String gender;
     private LocalDateTime communicationTime;
     private String province;
-    private Integer estimatedScore;
+    private String technicalRequirement;
 }

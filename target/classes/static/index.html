@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>码上解忧顾问Bot</title>
+    <title>码上启航 - 计算机技能培训顾问</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.31/dist/vue.global.min.js"></script>
@@ -80,7 +80,8 @@
     <!-- 顶部导航栏 -->
     <header class="bg-white shadow-sm py-3 px-4 flex items-center justify-between">
         <div class="flex items-center">
-            <div class="text-xl font-bold text-blue-600">顾问Bot</div>
+            <div class="text-xl font-bold text-blue-600">码上启航</div>
+            <div class="ml-2 text-sm text-gray-600">计算机技能培训顾问</div>
         </div>
         <div class="flex items-center space-x-3">
             <button
@@ -137,7 +138,7 @@
                             @keydown.enter.exact.prevent="sendMessage"
                             @keydown.ctrl.enter.exact.prevent="sendMessage"
                             @keydown.esc.exact="stopResponse"
-                            placeholder="输入您的问题..."
+                            placeholder="请输入您关于计算机课程、技能培训、毕业设计、软件开发等问题..."
                             :class="['flex-1 border rounded-lg py-3 px-4 pr-12 focus:outline-none focus:ring-2 resize-none',
                                 darkMode
                                     ? 'bg-gray-700 border-gray-600 text-white focus:ring-blue-400 placeholder-gray-400'
@@ -212,7 +213,7 @@
                 // 添加欢迎消息
                 messages.value.push({
                     role: 'assistant',
-                    content: '你好！我是码上解忧提供的AI志愿填报顾问，请问有什么能帮到您？',
+                    content: '你好！我是码上启航的AI课程顾问，为您提供专业的计算机技能培训咨询服务。请问有什么能帮到您？',
                     isLoading: false,
                     visibleChars: 0,
                     isStreaming: false
@@ -381,7 +382,7 @@
                 // 添加欢迎消息
                 messages.value.push({
                     role: 'assistant',
-                    content: '你好！我是码上解忧顾问，请问有什么能帮到您？',
+                    content: '你好！我是码上启航的AI课程顾问，为您提供专业的计算机技能培训咨询服务。请问有什么能帮到您？',
                     isLoading: false,
                     visibleChars: 0,
                     isStreaming: false

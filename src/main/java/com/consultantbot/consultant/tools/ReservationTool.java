@@ -18,35 +18,21 @@ public class ReservationTool {
     @Autowired
     private ReservationService reservationService;
 
-    @Tool("预约志愿填报服务")
+    @Tool("预约技术指导服务")
     public void addReservation(
-            @P("考生姓名")String name,
-            @P("考生电话")String phone,
-            @P("考生性别")String gender,
+            @P("学员姓名")String name,
+            @P("学员电话")String phone,
+            @P("学员性别")String gender,
             @P("预约沟通时间，格式为：yyyy-MM-dd'T'HH:mm")String communicationTime,
-            @P("考生所在省份")String province,
-            @P("考生预估分数")Integer estimateScore
+            @P("学员所在地区")String province,
+            @P("技术需求描述")String technicalRequirement
     ){
-//        DateTimeFormatter formatter = new DateTimeFormatterBuilder()
-//                .appendPattern("yyyy-MM-dd HH:mm")
-//                .optionalStart()
-//                .appendPattern(":ss")
-//                .optionalEnd()
-//                .toFormatter();
-//
-//        LocalDateTime dateTime;
-//        try {
-//            dateTime = LocalDateTime.parse(communicationTime, formatter);
-//        } catch (DateTimeParseException e) {
-//            throw new IllegalArgumentException("预约时间格式有误，请使用 yyyy-MM-dd HH:mm 或 yyyy-MM-dd HH:mm:ss");
-//        }
-
-        Reservation reservation = new Reservation(null, name, phone, gender, LocalDateTime.parse(communicationTime), province, estimateScore);
+        Reservation reservation = new Reservation(null, name, phone, gender, LocalDateTime.parse(communicationTime), province, technicalRequirement);
         reservationService.insert(reservation);
     }
 
     @Tool("根据手机号查询预约单")
-    public Reservation findReservation(@P("考生手机号")String phone){
+    public Reservation findReservation(@P("学员手机号")String phone){
         return reservationService.selectByPhone(phone);
     }
 }

@@ -9,11 +9,11 @@
         <version>3.5.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.consutantbot</groupId>
-    <artifactId>consutant</artifactId>
+    <groupId>com.mashangqihang</groupId>
+    <artifactId>computer-training-advisor</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>consultant</name>
-    <description>consultant</description>
+    <name>computer-training-advisor</name>
+    <description>码上启航计算机技能培训顾问系统</description>
     <url/>
     <licenses>
         <license/>
