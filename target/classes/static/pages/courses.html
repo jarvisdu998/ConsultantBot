@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课程中心 - 码上启航</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="text-xl font-bold text-blue-600">码上启航</a>
+                    <div class="ml-2 text-sm text-gray-600">计算机技能培训顾问</div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="../index.html" class="text-gray-700 hover:text-blue-600">返回聊天</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面内容 -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- 页面标题 -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">课程中心</h1>
+            <p class="text-xl text-gray-600">选择适合您的编程课程，开启技术学习之旅</p>
+        </div>
+
+        <!-- 编程语言 -->
+        <section id="programming-languages" class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">编程语言</h2>
+                <p class="text-gray-600">掌握主流编程语言，为技术发展打下坚实基础</p>
+            </div>
+            
+            <div id="programming-languages-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 课程将通过JavaScript动态加载 -->
+                <div class="text-center py-8">
+                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+                    <p class="text-gray-600 mt-2">加载中...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 后端开发 -->
+        <section id="backend-development" class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">后端开发</h2>
+                <p class="text-gray-600">学习服务器端开发技术，构建稳定可靠的后端系统</p>
+            </div>
+            
+            <div id="backend-development-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 课程将通过JavaScript动态加载 -->
+                <div class="text-center py-8">
+                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto"></div>
+                    <p class="text-gray-600 mt-2">加载中...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 前端开发 -->
+        <section id="frontend-development" class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">前端开发</h2>
+                <p class="text-gray-600">掌握现代前端技术栈，打造优秀的用户界面</p>
+            </div>
+            
+            <div id="frontend-development-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 课程将通过JavaScript动态加载 -->
+                <div class="text-center py-8">
+                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600 mx-auto"></div>
+                    <p class="text-gray-600 mt-2">加载中...</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p>&copy; 2024 码上启航. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 课程分类映射
+        const categoryMapping = {
+            'programming-languages': '编程语言',
+            'backend-development': '后端开发',
+            'frontend-development': '前端开发'
+        };
+
+        // 获取课程图标
+        function getCourseIcon(category) {
+            const iconMap = {
+                'Java基础入门': 'fab fa-java',
+                'Spring Boot实战': 'fas fa-leaf',
+                'Vue.js前端开发': 'fab fa-vuejs',
+                'Python数据分析': 'fab fa-python',
+                'Android开发入门': 'fab fa-android',
+                'MySQL数据库设计': 'fas fa-database',
+                '算法与数据结构': 'fas fa-code',
+                '毕业设计指导': 'fas fa-graduation-cap'
+            };
+            
+            return iconMap[category] || 'fas fa-code';
+        }
+
+        // 获取课程颜色
+        function getCourseColor(category) {
+            const colorMap = {
+                'Java基础入门': 'from-orange-500 to-red-500',
+                'Spring Boot实战': 'from-green-600 to-green-700',
+                'Vue.js前端开发': 'from-blue-500 to-indigo-500',
+                'Python数据分析': 'from-blue-500 to-cyan-500',
+                'Android开发入门': 'from-green-500 to-emerald-500',
+                'MySQL数据库设计': 'from-purple-600 to-purple-700',
+                '算法与数据结构': 'from-purple-500 to-purple-600',
+                '毕业设计指导': 'from-indigo-500 to-purple-500'
+            };
+            
+            return colorMap[category] || 'from-blue-500 to-blue-600';
+        }
+
+        // 加载课程数据
+        async function loadCoursesByCategory(category, containerId) {
+            try {
+                const response = await fetch(`/api/course/category/${category}`);
+                const data = await response.json();
+                
+                const container = document.getElementById(containerId);
+                
+                if (data.success && data.data.length > 0) {
+                    container.innerHTML = data.data.map(course => `
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                            <div class="h-48 bg-gradient-to-br ${getCourseColor(course.name)} flex items-center justify-center">
+                                <i class="${getCourseIcon(course.name)} text-white text-6xl"></i>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">${course.name}</h3>
+                                <p class="text-gray-600 mb-4">${course.description}</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-2xl font-bold text-blue-600">¥${course.price}</span>
+                                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700" 
+                                            onclick="enrollCourse(${course.id})">
+                                        立即报名
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    container.innerHTML = '<div class="col-span-full text-center py-8"><p class="text-gray-600">暂无课程</p></div>';
+                }
+            } catch (error) {
+                console.error(`加载${category}课程失败:`, error);
+                const container = document.getElementById(containerId);
+                container.innerHTML = '<div class="col-span-full text-center py-8"><p class="text-red-600">加载失败，请稍后重试</p></div>';
+            }
+        }
+
+        // 报名课程
+        function enrollCourse(courseId) {
+            // 这里可以跳转到课程详情页面或显示报名表单
+            alert('报名功能开发中，请联系客服：400-888-8888');
+        }
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 加载各个分类的课程
+            loadCoursesByCategory('编程语言', 'programming-languages-container');
+            loadCoursesByCategory('后端开发', 'backend-development-container');
+            loadCoursesByCategory('前端开发', 'frontend-development-container');
+        });
+    </script>
+</body>
+</html> 

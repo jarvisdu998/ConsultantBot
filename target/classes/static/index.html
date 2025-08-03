@@ -102,6 +102,19 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* 导航菜单样式 */
+        .group:hover .group-hover\:opacity-100 {
+            opacity: 1;
+        }
+
+        .group:hover .group-hover\:visible {
+            visibility: visible;
+        }
+
+        .group:hover .group-hover\:rotate-180 {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body>
@@ -160,12 +173,170 @@
 
     <!-- 主聊天区域 -->
     <div class="flex-1 flex flex-col">
+        <!-- 移动端导航菜单 -->
+        <div v-if="mobileMenuOpen" class="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-50" @click="toggleMobileMenu">
+            <div class="absolute top-0 right-0 w-64 h-full bg-white shadow-lg" @click.stop>
+                <div class="p-4 border-b border-gray-200">
+                    <div class="flex items-center justify-between">
+                        <div class="text-lg font-bold text-blue-600">导航菜单</div>
+                        <button @click="toggleMobileMenu" class="p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-times text-gray-600"></i>
+                        </button>
+                    </div>
+                </div>
+                <nav class="p-4">
+                    <!-- 首页 -->
+                    <div class="mb-4">
+                        <div class="font-medium text-gray-900 mb-2">首页</div>
+                        <div class="space-y-1">
+                            <a href="pages/home.html#introduction" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded">简要介绍</a>
+                            <a href="pages/home.html#popular-courses" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded">热门课程</a>
+                            <a href="pages/home.html#promotions" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded">优惠信息</a>
+                        </div>
+                    </div>
+
+                    <!-- 课程中心 -->
+                    <div class="mb-4">
+                        <div class="font-medium text-gray-900 mb-2">课程中心</div>
+                        <div class="space-y-1">
+                            <a href="pages/courses.html#programming-languages" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded">编程语言</a>
+                            <a href="pages/courses.html#backend-development" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded">后端开发</a>
+                            <a href="pages/courses.html#frontend-development" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded">前端开发</a>
+                        </div>
+                    </div>
+
+                    <!-- 学习服务 -->
+                    <div class="mb-4">
+                        <div class="font-medium text-gray-900 mb-2">学习服务</div>
+                        <div class="space-y-1">
+                            <a href="pages/learning-services.html#course-content" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded">课程详细内容与学习路径</a>
+                            <a href="pages/learning-services.html#pricing" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded">课程价格与优惠信息</a>
+                            <a href="pages/learning-services.html#reviews" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded">学员评价与反馈</a>
+                            <a href="pages/learning-services.html#instructors" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded">讲师团队介绍</a>
+                        </div>
+                    </div>
+
+                    <!-- 技术支持 -->
+                    <div class="mb-4">
+                        <div class="font-medium text-gray-900 mb-2">技术支持</div>
+                        <div class="space-y-1">
+                            <a href="pages/technical-support.html#specialized-services" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded">专项服务</a>
+                            <a href="pages/technical-support.html#enterprise-training" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded">企业培训与技术支持</a>
+                            <a href="pages/technical-support.html#outsourcing" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded">软件开发外包服务</a>
+                        </div>
+                    </div>
+
+                    <!-- 我的订单 -->
+                    <div class="mb-4">
+                        <div class="font-medium text-gray-900 mb-2">我的订单</div>
+                        <div class="space-y-1">
+                            <a href="pages/orders.html#order-query" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded">查询订单状态</a>
+                        </div>
+                    </div>
+
+                    <!-- 关于我们 -->
+                    <div class="mb-4">
+                        <div class="font-medium text-gray-900 mb-2">关于我们</div>
+                        <div class="space-y-1">
+                            <a href="pages/about.html#platform-intro" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded">平台简介</a>
+                            <a href="pages/about.html#contact" class="block px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded">联系方式</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
         <!-- 顶部导航栏 -->
         <header class="bg-white shadow-sm py-3 px-4 flex items-center justify-between">
             <div class="flex items-center">
                 <div class="text-xl font-bold text-blue-600">码上启航</div>
                 <div class="ml-2 text-sm text-gray-600">计算机技能培训顾问</div>
             </div>
+            
+            <!-- 导航菜单 -->
+            <nav class="hidden lg:flex items-center space-x-1">
+                <!-- 首页 -->
+                <div class="relative group">
+                    <a href="pages/home.html" class="px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors flex items-center">
+                        首页
+                        <i class="fas fa-chevron-down ml-1 text-xs transition-transform group-hover:rotate-180"></i>
+                    </a>
+                    <div class="absolute top-full left-0 mt-1 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <a href="pages/home.html#introduction" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">简要介绍</a>
+                        <a href="pages/home.html#popular-courses" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">热门课程</a>
+                        <a href="pages/home.html#promotions" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">优惠信息</a>
+                    </div>
+                </div>
+
+                <!-- 课程中心 -->
+                <div class="relative group">
+                    <a href="pages/courses.html" class="px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors flex items-center">
+                        课程中心
+                        <i class="fas fa-chevron-down ml-1 text-xs transition-transform group-hover:rotate-180"></i>
+                    </a>
+                    <div class="absolute top-full left-0 mt-1 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <a href="pages/courses.html#programming-languages" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">编程语言</a>
+                        <a href="pages/courses.html#backend-development" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">后端开发</a>
+                        <a href="pages/courses.html#frontend-development" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">前端开发</a>
+                    </div>
+                </div>
+
+                <!-- 学习服务 -->
+                <div class="relative group">
+                    <a href="pages/learning-services.html" class="px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors flex items-center">
+                        学习服务
+                        <i class="fas fa-chevron-down ml-1 text-xs transition-transform group-hover:rotate-180"></i>
+                    </a>
+                    <div class="absolute top-full left-0 mt-1 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <a href="pages/learning-services.html#course-content" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">课程详细内容与学习路径</a>
+                        <a href="pages/learning-services.html#pricing" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">课程价格与优惠信息</a>
+                        <a href="pages/learning-services.html#reviews" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">学员评价与反馈</a>
+                        <a href="pages/learning-services.html#instructors" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">讲师团队介绍</a>
+                    </div>
+                </div>
+
+                <!-- 技术支持 -->
+                <div class="relative group">
+                    <a href="pages/technical-support.html" class="px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors flex items-center">
+                        技术支持
+                        <i class="fas fa-chevron-down ml-1 text-xs transition-transform group-hover:rotate-180"></i>
+                    </a>
+                    <div class="absolute top-full left-0 mt-1 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <a href="pages/technical-support.html#specialized-services" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">专项服务</a>
+                        <a href="pages/technical-support.html#enterprise-training" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">企业培训与技术支持</a>
+                        <a href="pages/technical-support.html#outsourcing" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">软件开发外包服务</a>
+                    </div>
+                </div>
+
+                <!-- 我的订单 -->
+                <div class="relative group">
+                    <a href="pages/orders.html" class="px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors flex items-center">
+                        我的订单
+                        <i class="fas fa-chevron-down ml-1 text-xs transition-transform group-hover:rotate-180"></i>
+                    </a>
+                    <div class="absolute top-full left-0 mt-1 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <a href="pages/orders.html#order-query" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">查询订单状态</a>
+                    </div>
+                </div>
+
+                <!-- 关于我们 -->
+                <div class="relative group">
+                    <a href="pages/about.html" class="px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors flex items-center">
+                        关于我们
+                        <i class="fas fa-chevron-down ml-1 text-xs transition-transform group-hover:rotate-180"></i>
+                    </a>
+                    <div class="absolute top-full left-0 mt-1 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <a href="pages/about.html#platform-intro" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">平台简介</a>
+                        <a href="pages/about.html#contact" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">联系方式</a>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- 移动端汉堡菜单按钮 -->
+            <button class="lg:hidden p-2 rounded-lg hover:bg-gray-100" @click="toggleMobileMenu">
+                <i class="fas fa-bars text-gray-600"></i>
+            </button>
+
             <div class="flex items-center space-x-3">
                 <button @click="startNewConversation" class="p-2 rounded-lg bg-green-500 hover:bg-green-600 text-white">
                     <i class="fas fa-plus mr-2"></i>
@@ -313,6 +484,7 @@
             const sidebarOpen = ref(false);
             const conversations = ref([]);
             const currentConversationIndex = ref(0);
+            const mobileMenuOpen = ref(false); // 新增：控制移动端菜单的显示
 
             const memoeryId = ref(Date.now().toString());
             let controller = null;
@@ -349,6 +521,11 @@
             const toggleDarkMode = () => {
                 darkMode.value = !darkMode.value;
                 localStorage.setItem('darkMode', darkMode.value);
+            };
+
+            // 切换移动端菜单
+            const toggleMobileMenu = () => {
+                mobileMenuOpen.value = !mobileMenuOpen.value;
             };
 
             // 生成AI回复的推荐选项
@@ -677,7 +854,9 @@
                 switchConversation,
                 deleteConversation,
                 adjustTextareaHeight,
-                startNewConversation
+                startNewConversation,
+                mobileMenuOpen,
+                toggleMobileMenu
             };
         }
     }).mount('#app');

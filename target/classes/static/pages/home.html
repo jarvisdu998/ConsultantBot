@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 码上启航</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="text-xl font-bold text-blue-600">码上启航</a>
+                    <div class="ml-2 text-sm text-gray-600">计算机技能培训顾问</div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="../index.html" class="text-gray-700 hover:text-blue-600">返回聊天</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面内容 -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- 简要介绍 -->
+        <section id="introduction" class="mb-16">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">码上启航</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    专业的计算机技能培训平台，致力于为学员提供高质量的编程教育服务
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-code text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">专业课程</h3>
+                    <p class="text-gray-600">涵盖Java、Python、前端开发等多个技术领域，课程体系完善</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-users text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">优秀师资</h3>
+                    <p class="text-gray-600">资深技术专家授课，实战经验丰富，教学质量有保障</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-graduation-cap text-purple-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">就业支持</h3>
+                    <p class="text-gray-600">提供就业指导、项目实战、企业对接等全方位服务</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 热门课程 -->
+        <section id="popular-courses" class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">热门课程</h2>
+                <p class="text-gray-600">精选最受欢迎的编程课程，助您快速掌握核心技能</p>
+            </div>
+            
+            <div id="popular-courses-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 课程将通过JavaScript动态加载 -->
+                <div class="text-center py-8">
+                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+                    <p class="text-gray-600 mt-2">加载中...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 优惠信息 -->
+        <section id="promotions" class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">优惠信息</h2>
+                <p class="text-gray-600">限时优惠，机会难得，快来抢购吧！</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gradient-to-r from-red-500 to-pink-500 rounded-lg p-8 text-white">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-bold">新学员特惠</h3>
+                        <span class="bg-white text-red-500 px-3 py-1 rounded-full text-sm font-bold">限时</span>
+                    </div>
+                    <p class="text-lg mb-4">首次报名享受8折优惠，最高可省1000元！</p>
+                    <button class="bg-white text-red-500 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100">
+                        立即抢购
+                    </button>
+                </div>
+                
+                <div class="bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg p-8 text-white">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-bold">组合课程</h3>
+                        <span class="bg-white text-blue-500 px-3 py-1 rounded-full text-sm font-bold">推荐</span>
+                    </div>
+                    <p class="text-lg mb-4">购买任意两门课程，第三门课程半价！</p>
+                    <button class="bg-white text-blue-500 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100">
+                        查看详情
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p>&copy; 2024 码上启航. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 获取热门课程
+        async function loadPopularCourses() {
+            try {
+                const response = await fetch('/api/course/popular');
+                const data = await response.json();
+                
+                const container = document.getElementById('popular-courses-container');
+                
+                if (data.success && data.data.length > 0) {
+                    container.innerHTML = data.data.map(course => `
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                            <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                                <i class="fas fa-code text-white text-6xl"></i>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">${course.name}</h3>
+                                <p class="text-gray-600 mb-4">${course.description}</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-2xl font-bold text-blue-600">¥${course.price}</span>
+                                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700" 
+                                            onclick="enrollCourse(${course.id})">
+                                        立即报名
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    container.innerHTML = '<div class="col-span-full text-center py-8"><p class="text-gray-600">暂无热门课程</p></div>';
+                }
+            } catch (error) {
+                console.error('加载热门课程失败:', error);
+                const container = document.getElementById('popular-courses-container');
+                container.innerHTML = '<div class="col-span-full text-center py-8"><p class="text-red-600">加载失败，请稍后重试</p></div>';
+            }
+        }
+
+        // 报名课程
+        function enrollCourse(courseId) {
+            // 这里可以跳转到课程详情页面或显示报名表单
+            alert('报名功能开发中，请联系客服：400-888-8888');
+        }
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPopularCourses();
+        });
+    </script>
+</body>
+</html> 
