@@ -25,9 +25,14 @@ public class OrderService {
         return orderMapper.selectByPhone(phone);
     }
     
-    // 根据学员ID查询订单
-    public List<Order> getOrdersByStudentId(Long studentId) {
-        return orderMapper.selectByStudentId(studentId);
+    // 根据用户ID查询订单
+    public List<Order> getOrdersByUserId(Long userId) {
+        return orderMapper.selectByUserId(userId);
+    }
+    
+    // 查询所有订单（管理员用）
+    public List<Order> getAllOrders() {
+        return orderMapper.selectAll();
     }
     
     // 创建订单

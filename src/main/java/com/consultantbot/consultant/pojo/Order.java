@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class Order {
     private Long id;
     private String orderNumber;
-    private Long studentId;
+    private Long userId;
     private Long courseId;
     private BigDecimal amount;
     private String status;
@@ -23,6 +23,6 @@ public class Order {
     private LocalDateTime updateTime;
     
     // 关联对象
-    private Student student;
+    private User user;
     private Course course;
 } 

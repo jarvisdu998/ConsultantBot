@@ -62,6 +62,44 @@ public class OrderController {
     }
 
     /**
+     * 根据用户ID查询订单（学员查看自己的订单）
+     */
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<Map<String, Object>> queryOrdersByUserId(@PathVariable Long userId) {
+        Map<String, Object> response = new HashMap<>();
+        
+        try {
+            List<Order> orders = orderService.getOrdersByUserId(userId);
+            response.put("success", true);
+            response.put("data", orders);
+        } catch (Exception e) {
+            response.put("success", false);
+            response.put("message", "查询订单失败：" + e.getMessage());
+        }
+        
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * 查询所有订单（管理员用）
+     */
+    @GetMapping("/admin/all")
+    public ResponseEntity<Map<String, Object>> getAllOrders() {
+        Map<String, Object> response = new HashMap<>();
+        
+        try {
+            List<Order> orders = orderService.getAllOrders();
+            response.put("success", true);
+            response.put("data", orders);
+        } catch (Exception e) {
+            response.put("success", false);
+            response.put("message", "查询订单失败：" + e.getMessage());
+        }
+        
+        return ResponseEntity.ok(response);
+    }
+
+    /**
      * 创建订单
      */
     @PostMapping("/create")

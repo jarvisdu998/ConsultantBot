@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.consultantbot.consultant.mapper.OrderMapper">
+    
+    <!-- 结果映射 -->
+    <resultMap id="OrderResultMap" type="com.consultantbot.consultant.pojo.Order">
+        <id column="id" property="id"/>
+        <result column="order_number" property="orderNumber"/>
+        <result column="user_id" property="userId"/>
+        <result column="course_id" property="courseId"/>
+        <result column="amount" property="amount"/>
+        <result column="status" property="status"/>
+        <result column="payment_method" property="paymentMethod"/>
+        <result column="payment_time" property="paymentTime"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        
+        <!-- 关联用户对象 -->
+        <association property="user" javaType="com.consultantbot.consultant.pojo.User">
+            <id column="user_id" property="id"/>
+            <result column="user_name" property="name"/>
+            <result column="user_phone" property="phone"/>
+        </association>
+        
+        <!-- 关联课程对象 -->
+        <association property="course" javaType="com.consultantbot.consultant.pojo.Course">
+            <id column="course_id" property="id"/>
+            <result column="course_name" property="name"/>
+            <result column="course_price" property="price"/>
+        </association>
+    </resultMap>
+    
+    <!-- 根据手机号查询订单 -->
+    <select id="selectByPhone" parameterType="string" resultMap="OrderResultMap">
+        SELECT o.*, u.name as user_name, u.phone as user_phone, c.name as course_name, c.price as course_price
+        FROM `order` o
+        LEFT JOIN user u ON o.user_id = u.id
+        LEFT JOIN course c ON o.course_id = c.id
+        WHERE u.phone = #{phone}
+        ORDER BY o.create_time DESC
+    </select>
+    
+    <!-- 根据用户ID查询订单 -->
+    <select id="selectByUserId" parameterType="long" resultMap="OrderResultMap">
+        SELECT o.*, u.name as user_name, u.phone as user_phone, c.name as course_name, c.price as course_price
+        FROM `order` o
+        LEFT JOIN user u ON o.user_id = u.id
+        LEFT JOIN course c ON o.course_id = c.id
+        WHERE o.user_id = #{userId}
+        ORDER BY o.create_time DESC
+    </select>
+    
+    <!-- 查询所有订单（管理员用） -->
+    <select id="selectAll" resultMap="OrderResultMap">
+        SELECT o.*, u.name as user_name, u.phone as user_phone, c.name as course_name, c.price as course_price
+        FROM `order` o
+        LEFT JOIN user u ON o.user_id = u.id
+        LEFT JOIN course c ON o.course_id = c.id
+        ORDER BY o.create_time DESC
+    </select>
+    
+    <!-- 创建订单 -->
+    <insert id="insert" parameterType="com.consultantbot.consultant.pojo.Order" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `order` (order_number, user_id, course_id, amount, status, create_time, update_time)
+        VALUES (#{orderNumber}, #{userId}, #{courseId}, #{amount}, #{status}, NOW(), NOW())
+    </insert>
+    
+    <!-- 更新订单状态 -->
+    <update id="updateStatus" parameterType="com.consultantbot.consultant.pojo.Order">
+        UPDATE `order` 
+        SET status = #{status}, 
+            payment_method = #{paymentMethod}, 
+            payment_time = #{paymentTime},
+            update_time = NOW()
+        WHERE id = #{id}
+    </update>
+    
+</mapper> 

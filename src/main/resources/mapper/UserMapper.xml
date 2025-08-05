@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.consultantbot.consultant.mapper.UserMapper">
+    
+    <!-- 结果映射 -->
+    <resultMap id="UserResultMap" type="com.consultantbot.consultant.pojo.User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="role" property="role"/>
+        <result column="name" property="name"/>
+        <result column="phone" property="phone"/>
+        <result column="email" property="email"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+    
+    <!-- 根据ID查询用户 -->
+    <select id="findById" parameterType="long" resultMap="UserResultMap">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+    
+    <!-- 根据用户名查询用户 -->
+    <select id="findByUsername" parameterType="string" resultMap="UserResultMap">
+        SELECT * FROM user WHERE username = #{username}
+    </select>
+    
+    <!-- 根据手机号查询用户 -->
+    <select id="findByPhone" parameterType="string" resultMap="UserResultMap">
+        SELECT * FROM user WHERE phone = #{phone}
+    </select>
+    
+    <!-- 查询所有用户 -->
+    <select id="findAll" resultMap="UserResultMap">
+        SELECT * FROM user ORDER BY create_time DESC
+    </select>
+    
+    <!-- 根据角色查询用户 -->
+    <select id="findByRole" parameterType="string" resultMap="UserResultMap">
+        SELECT * FROM user WHERE role = #{role} ORDER BY create_time DESC
+    </select>
+    
+    <!-- 插入用户 -->
+    <insert id="insert" parameterType="com.consultantbot.consultant.pojo.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user (username, password, role, name, phone, email, status, create_time, update_time)
+        VALUES (#{username}, #{password}, #{role}, #{name}, #{phone}, #{email}, #{status}, NOW(), NOW())
+    </insert>
+    
+    <!-- 更新用户 -->
+    <update id="update" parameterType="com.consultantbot.consultant.pojo.User">
+        UPDATE user 
+        SET username = #{username},
+            role = #{role},
+            name = #{name},
+            phone = #{phone},
+            email = #{email},
+            status = #{status},
+            update_time = NOW()
+        WHERE id = #{id}
+    </update>
+    
+    <!-- 删除用户 -->
+    <delete id="deleteById" parameterType="long">
+        DELETE FROM user WHERE id = #{id}
+    </delete>
+    
+    <!-- 根据用户名和密码查询用户 -->
+    <select id="findByUsernameAndPassword" resultMap="UserResultMap">
+        SELECT * FROM user WHERE username = #{username} AND password = #{password}
+    </select>
+    
+</mapper> 
