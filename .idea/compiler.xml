@@ -9,6 +9,9 @@
         <module name="consutant" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="computer-training-advisor" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

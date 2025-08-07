@@ -24,6 +24,7 @@ import org.apache.xmlbeans.impl.xb.xsdschema.ListDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import com.consultantbot.consultant.tools.*;
 
 import java.util.List;
 
@@ -111,4 +112,30 @@ public class CommonConfig {
                 .embeddingModel(embeddingModel)
                 .build();
     }
+
+//    // 工具Bean配置
+//    @Bean
+//    public ReservationTool reservationTool() {
+//        return new ReservationTool();
+//    }
+//
+//    @Bean
+//    public StudentTool studentTool() {
+//        return new StudentTool();
+//    }
+//
+//    @Bean
+//    public CourseTool courseTool() {
+//        return new CourseTool();
+//    }
+//
+//    @Bean
+//    public OrderTool orderTool() {
+//        return new OrderTool();
+//    }
+//
+//    @Bean
+//    public AdminTool adminTool() {
+//        return new AdminTool();
+//    }
 }

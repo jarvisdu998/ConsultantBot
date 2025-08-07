@@ -20,7 +20,7 @@ import reactor.core.publisher.Flux;
         chatMemory = "chatMemory", // 配置会话记忆对象
         chatMemoryProvider = "chatMemoryProvider",
         contentRetriever = "contentRetriever",
-        tools = "reservationTool"
+        tools = {"reservationTool", "studentTool", "courseTool", "orderTool", "adminTool"}
 )
 
 public interface ConsultantService {

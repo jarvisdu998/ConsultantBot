@@ -18,14 +18,14 @@ public class ReservationTool {
     @Autowired
     private ReservationService reservationService;
 
-    @Tool("预约志愿填报服务")
+    @Tool("预约课程或者技术咨询服务")
     public void addReservation(
-            @P("考生姓名")String name,
-            @P("考生电话")String phone,
-            @P("考生性别")String gender,
+            @P("学员姓名")String name,
+            @P("学员电话")String phone,
+            @P("学员性别")String gender,
             @P("预约沟通时间，格式为：yyyy-MM-dd'T'HH:mm")String communicationTime,
-            @P("考生所在省份")String province,
-            @P("考生预估分数")Integer estimateScore
+            @P("学员所在省份")String province,
+            @P("学员技术需求")Integer estimateScore
     ){
 //        DateTimeFormatter formatter = new DateTimeFormatterBuilder()
 //                .appendPattern("yyyy-MM-dd HH:mm")
@@ -42,11 +42,11 @@ public class ReservationTool {
 //        }
 
         Reservation reservation = new Reservation(null, name, phone, gender, LocalDateTime.parse(communicationTime), province, estimateScore);
-        reservationService.insert(reservation);
+        reservationService.addReservation(reservation);
     }
 
     @Tool("根据手机号查询预约单")
-    public Reservation findReservation(@P("考生手机号")String phone){
-        return reservationService.selectByPhone(phone);
+    public Reservation findReservation(@P("学员手机号")String phone){
+        return reservationService.getReservationByPhone(phone);
     }
 }
