@@ -56,6 +56,17 @@ public class ChatController {
     }
     
     /**
+     * 检查用户登录状态
+     */
+    @RequestMapping("/api/checkLoginStatus")
+    public String checkLoginStatus(HttpSession session) {
+        String sessionId = session.getId();
+        Boolean isLoggedIn = loginStatus.get(sessionId);
+        boolean loggedIn = isLoggedIn != null && isLoggedIn;
+        return "{\"loggedIn\": " + loggedIn + "}";
+    }
+    
+    /**
      * 清除用户登录状态（登出）
      */
     @RequestMapping("/api/logout")
